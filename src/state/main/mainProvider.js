@@ -1,5 +1,5 @@
 
-import CantusFirmus from '../../cantus-firmus/index';
+// import CantusFirmus from 'cantus-firmus';
 
 import state from './state'
 import setters from './setters'
@@ -7,6 +7,7 @@ import methods from './methods'
 import reducers from './reducers'
 import constants from './constants'
 
+const CantusFirmus = require("cantus-firmus");
 
 const main = new CantusFirmus(state)
 
