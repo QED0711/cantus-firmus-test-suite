@@ -1,1 +1,4 @@
 
+[submodule "cantus-firmus"]
+	path = cantus-firmus
+	url = https://github.com/QED0711/cantus-firmus.git
