@@ -1,7 +1,8 @@
 
 const state = {
 
-    // your state here...
+    num1: 0,
+    str1: "Hello, world"
 
 }
 
