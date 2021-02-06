@@ -14,7 +14,7 @@ main.addMethods(methods)
 main.addReducers(reducers)
 main.addConstants(constants)
 
-main.connectToLocalStorage({name: "main"})
+main.connectToLocalStorage({name: "main", subscriberWindows: ["child", "grandchild"]})
 
 export const MainContext = main.context;
 export const MainProvider = main.createProvider();
