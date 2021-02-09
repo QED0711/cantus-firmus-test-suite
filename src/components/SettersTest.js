@@ -29,6 +29,8 @@ const SettersChild = () => {
         setters.setNested_str2("Updated a nested value!")
     }
 
+    
+
 
     return (
         <div>
@@ -51,6 +53,10 @@ const SettersChild = () => {
             <h1 id="num1">{state.num1}</h1>
             <h1 id="str1">{state.str1}</h1>
             <h1 id="nestedStr2">{state.nested.str2}</h1>
+
+            <br/>
+
+            <h1 id="setterKeys">{Object.keys(setters).join(" ")}</h1>
             
         </div>
     )
