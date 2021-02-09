@@ -9,7 +9,12 @@ import constants from './constants'
 
 const main = new CantusFirmus(state, {nestedSetters: true})
 
+main.ignoreSetters(["ignoreMe", ["nested", "ignoreMeToo"]])
+main.ignoreGetters(["ignoreMe", ["nested", "ignoreMeToo"]])
+
+
 main.addCustomSetters(setters)
+
 
 main.addMethods(methods)
 main.addNamespacedMethods(namespacedMethods)
