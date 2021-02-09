@@ -16,7 +16,6 @@ test("Methods are bound to the provider and have access to the `this` keyword", 
 test("The `this` keyword in bound methods has access to state, setters, reducers, and constants", () => {
     const dom = render(<MethodsTest />)
     const tk = dom.container.querySelector("#thisKeyword").innerHTML
-    console.log("THIS_KEYWORD: ", tk)
 
     expect(!!tk.match("state")).toBe(true)
     expect(!!tk.match("setters")).toBe(true)
