@@ -31,3 +31,12 @@ test("Nested dynamic getters are correctly associated with state values", () => 
     expect(nestedStr2).toEqual("I'm nested one level")
 
 })
+
+test("Ignored getters are not included in the `getters` object", () => {
+    const dom = render(<StateTest/>)
+
+    const getterKeys = dom.container.querySelector("#getterKeys").innerHTML
+
+    expect(!!getterKeys.match("getIgnoreMe")).toBe(false)
+    expect(!!getterKeys.match("getNested_ignoreMeToo")).toBe(false)
+})
