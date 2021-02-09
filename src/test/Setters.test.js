@@ -54,3 +54,12 @@ test("Dynamic nested setters set their linked state property", () => {
 
     expect(nestedStr2).toEqual("Updated a nested value!")
 })
+
+test("No dynamic setters are created for state specified in the `ignoreSetters` array", () => {
+    const dom = render(<SettersTest />)
+
+    const setterKeys = dom.container.querySelector("#setterKeys").innerHTML
+    
+    expect(!!setterKeys.match("setIgnoreMe")).toBe(false);
+    expect(!!setterKeys.match("setNested_ignoreMeToo")).toBe(false)
+})
