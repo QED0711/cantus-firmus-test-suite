@@ -16,7 +16,7 @@ const StateChild = () => {
             <h1 id="nested-num2">{getters.getNested_num2()}</h1>
             <h1 id="nested-str2">{getters.getNested_str2()}</h1>
 
-
+            <h1 id="getterKeys">{Object.keys(getters).join(" ")}</h1>
         </>
     )
 }
