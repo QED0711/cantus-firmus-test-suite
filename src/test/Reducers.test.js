@@ -53,3 +53,26 @@ test("Reducers are able to set the state", () => {
     expect(str1.innerHTML).toEqual("New String 1");
     expect(str2.innerHTML).toEqual("New Nested String");
 })
+
+test("Reducer dispatchers return the updated state", () => {
+    const dom = render(<ReducersTest />);
+
+    fireEvent.click(dom.container.querySelector("#updateStateString"))
+
+    waitFor(() => {
+        let stateString;
+        try{
+            stateString = JSON.parse(dom.container.querySelector("#stateString").innerHTML)
+        } catch(err){
+            // will retry on next call
+        }
+        expect(stateString.ignoreMe).toBe("This is a new string")
+    })
+
+
+
+})
+
+test("Reducer dispatchers are asynchronous", () => {
+    
+})
