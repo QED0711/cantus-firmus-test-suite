@@ -22,6 +22,8 @@ const reducers = {
                 const newState = JSON.parse(JSON.stringify(state))
                 newState.nested.str2 = action.payload
                 return newState;
+            case "UPDATE_IGNORED_STATE":
+                return {...state, ignoreMe: action.payload}
             default:
                 return state;
         }

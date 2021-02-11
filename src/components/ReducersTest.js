@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { MainContext, MainProvider } from '../state/main/mainProvider'
 
 
@@ -7,6 +7,7 @@ const ReducersChild = () => {
     const {state, reducers} = useContext(MainContext)
     const {numReducer, strReducer} = reducers;
 
+    const [stateString, setStateString] = useState("")
 
     // EVENTS
     const handleUpdate = param => e => {
@@ -26,10 +27,18 @@ const ReducersChild = () => {
         }
     }
 
+    const triggerStateChange = async () => {
+        const newState = await strReducer.dispatch(state, {type: "UPDATE_IGNORED_STATE", payload: "This is a new string"})
+        setStateString(JSON.stringify(newState))
+    }
+
     return (
         <div>
 
             <h1 id="reducerKeys">{Object.keys(reducers).join(" ")}</h1>
+            
+            <h1 id="stateString">{stateString}</h1>
+            <button id="updateStateString" onClick={triggerStateChange}>Trigger State Change</button>
 
             <h1 id="num1">{state.num1}</h1>
             <button id="updateNum1" onClick={handleUpdate("num1")}>Update Num 1</button>
