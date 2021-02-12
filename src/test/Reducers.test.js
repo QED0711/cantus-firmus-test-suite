@@ -73,6 +73,17 @@ test("Reducer dispatchers return the updated state", () => {
 
 })
 
-test("Reducer dispatchers are asynchronous", () => {
+test("Reducer dispatchers are asynchronous", async () => {
+    const dom = render(<ReducersTest />);
+
+    fireEvent.click(dom.container.querySelector("#updateNum1Multiple"));
+
+    waitFor(() => {
+        const num1 = dom.container.querySelector("#num1").innerHTML;
+        expect(num1).toEqual("3")
+    })
+
+    
+
     
 })

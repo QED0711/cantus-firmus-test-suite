@@ -4,7 +4,7 @@ import { MainContext, MainProvider } from '../state/main/mainProvider'
 
 const ReducersChild = () => {
 
-    const {state, reducers} = useContext(MainContext)
+    const {state, reducers, getters} = useContext(MainContext)
     const {numReducer, strReducer} = reducers;
 
     const [stateString, setStateString] = useState("")
@@ -31,6 +31,12 @@ const ReducersChild = () => {
         const newState = await strReducer.dispatch(state, {type: "UPDATE_IGNORED_STATE", payload: "This is a new string"})
         setStateString(JSON.stringify(newState))
     }
+    
+    const triggerMultipleStateChanges = async () => {
+        await strReducer.dispatch(state, {type: "UPDATE_NUM_1", payload: getters.getNum1() + 1})
+        await strReducer.dispatch(state, {type: "UPDATE_NUM_1", payload: getters.getNum1() + 1})
+        strReducer.dispatch(state, {type: "UPDATE_NUM_1", payload: getters.getNum1() + 1})
+    }
 
     return (
         <div>
@@ -42,6 +48,7 @@ const ReducersChild = () => {
 
             <h1 id="num1">{state.num1}</h1>
             <button id="updateNum1" onClick={handleUpdate("num1")}>Update Num 1</button>
+            <button id="updateNum1Multiple" onClick={triggerMultipleStateChanges}>Update Num 1 multiple times</button>
             
             <h1 id="num2">{state.nested.num2}</h1>
             <button id="updateNum2" onClick={handleUpdate("num2")}>Update Num 2</button>
